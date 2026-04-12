@@ -26,14 +26,14 @@ This repository contains the source code for my personal academic and research p
 - **Deployment:** GitHub Pages.
 
 ## 📁 Project Structure
-
+```
 .
 ├── index.html          # Main entry point (Single Page Application logic)
 ├── images/             # Local assets (Photos, Project Screenshots, Certificates)
 │   ├── pp.png          # Profile picture
 │   └── [project].png   # Project-specific visuals
 └── README.md           # This documentation
-
+```
 ## 📄 Publications
 My research focuses on **AIED (Artificial Intelligence in Education)** and **HCI (Human-Computer Interaction)**. I have published in several peer-reviewed journals, focusing on:
 1. Automated Essay Assessment (Score Alignment).
