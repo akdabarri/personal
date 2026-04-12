@@ -47,4 +47,3 @@ My research focuses on **AIED (Artificial Intelligence in Education)** and **HCI
 
 ---
 *Built with precision and a focus on pedagogical impact.*
-```
