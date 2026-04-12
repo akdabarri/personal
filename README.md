@@ -27,7 +27,7 @@ This repository contains the source code for my personal academic and research p
 
 ## 📁 Project Structure
 ```
-.
+
 ├── index.html          # Main entry point (Single Page Application logic)
 ├── images/             # Local assets (Photos, Project Screenshots, Certificates)
 │   ├── pp.png          # Profile picture
