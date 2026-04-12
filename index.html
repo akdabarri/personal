@@ -1,286 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Muhamad Akda Fathul Barri | Educational AI Researcher</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhamad Akda Barri | Educational AI Researcher</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-      background: #ffffff;
-      color: #111827;
-      line-height: 1.7;
-    }
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --border: #e5e7eb;
+            --accent: #000000;
+            --surface: #f9fafb;
+        }
 
-    a { color: inherit; text-decoration: none; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    header { border-bottom: 1px solid #e5e7eb; }
+        html, body { height: 100%; scroll-behavior: smooth; }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 32px;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
 
-    header .container {
-      padding-top: 64px;
-      padding-bottom: 48px;
-    }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; width: 100%; }
 
-    h1 { font-size: 3rem; font-weight: 300; margin-bottom: 12px; }
-    h2 { font-size: 1.6rem; font-weight: 400; margin-bottom: 24px; }
-    h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: 6px; }
+        /* NAVIGATION */
+        header { border-bottom: 1px solid var(--border); background: #fff; position: sticky; top: 0; z-index: 100; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; }
+        .nav-brand { font-weight: 700; font-size: 1.1rem; cursor: pointer; letter-spacing: -0.02em; }
+        .nav-links { display: flex; gap: 1.5rem; font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); }
+        .nav-link { cursor: pointer; transition: color 0.2s; }
+        .nav-link:hover, .nav-link.active { color: var(--text-primary); border-bottom: 2px solid var(--text-primary); }
 
-    p { margin-bottom: 14px; color: #374151; }
+        main { flex: 1; }
+        section { display: none; padding: 3rem 0; animation: fadeIn 0.4s ease; }
+        section.active { display: block; }
 
-    .subtitle {
-      font-size: 1.1rem;
-      color: #6b7280;
-      margin-bottom: 24px;
-    }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-    .contact {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      font-size: 0.95rem;
-      color: #4b5563;
-    }
+        /* HOME SECTION */
+        .profile-hero { display: flex; gap: 2rem; align-items: flex-start; margin-bottom: 3rem; }
+        .profile-img-container { flex-shrink: 0; width: 200px; height: 200px; background: var(--surface); border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+        .profile-img-container img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        
+        .about-brief h1 { font-size: 2.25rem; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 0.75rem; line-height: 1.1; }
+        .about-text { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0.85rem; text-align: justify; }
+        
+        /* INLINE LINKS */
+        .inline-link { color: var(--text-primary); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--text-secondary); transition: border-color 0.2s; }
+        .inline-link:hover { border-bottom-color: var(--text-primary); }
 
-    nav { border-bottom: 1px solid #e5e7eb; }
+        /* RECOGNITION (News Style) */
+        .recognition-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .news-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+        .news-img { width: 100%; height: 160px; background: #eaeaea; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #888; border-bottom: 1px solid var(--border); overflow: hidden; }
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .news-content { padding: 1.25rem; }
+        .news-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.5rem; display: block; }
+        .news-title { font-size: 0.95rem; font-weight: 700; line-height: 1.4; color: var(--text-primary); }
 
-    nav .container {
-      display: flex;
-      gap: 40px;
-    }
+        /* HEADINGS */
+        .section-header { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 2rem; border-bottom: 2px solid var(--text-primary); display: inline-block; padding-bottom: 4px; }
 
-    nav button {
-      background: none;
-      border: none;
-      padding: 18px 0;
-      font-size: 1rem;
-      cursor: pointer;
-      color: #6b7280;
-      border-bottom: 2px solid transparent;
-    }
+        /* EXPERIENCE & PROJECTS */
+        .item-row { margin-bottom: 2.5rem; }
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
+        .item-title { font-size: 1.1rem; font-weight: 700; }
+        .item-date { font-size: 0.85rem; color: var(--text-secondary); font-weight: 500; }
+        .item-subtitle { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; }
+        .item-desc { font-size: 0.9rem; color: var(--text-secondary); list-style-position: inside; }
+        .item-desc li { margin-bottom: 0.4rem; }
 
-    nav button.active {
-      color: #111827;
-      border-bottom: 2px solid #111827;
-    }
+        /* PROJECT GRID */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .project-card { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--surface); }
+        .project-img-box { width: 100%; height: 200px; background: #eaeaea; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; color: #888; overflow: hidden; }
+        .project-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .project-info { padding: 1.5rem; }
+        .project-summary { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.75rem; line-height: 1.5; }
 
-    main { padding: 64px 0; }
-    section { margin-bottom: 64px; }
+        /* PUBLICATIONS */
+        .pub-item { font-size: 0.95rem; margin-bottom: 1.5rem; padding-left: 1rem; border-left: 2px solid var(--text-primary); line-height: 1.6; }
+        .pub-contribution { font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem; display: block; background: var(--surface); padding: 8px 12px; border-radius: 4px; border: 1px solid var(--border); }
 
-    .muted { color: #6b7280; font-size: 0.95rem; }
+        /* CV SECTION */
+        .cv-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 3rem; text-align: center; }
+        .download-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--text-primary); color: #fff; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none; margin-top: 1.5rem; transition: background 0.2s; }
+        .download-btn:hover { background: #374151; }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      color: #374151;
-    }
+        /* FOOTER */
+        footer { border-top: 1px solid var(--border); padding: 2.5rem 0; margin-top: auto; font-size: 0.85rem; color: var(--text-secondary); }
+        .footer-flex { display: flex; justify-content: space-between; align-items: center; }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 12px 32px;
-    }
-
-    .cv-box {
-      border: 1px solid #e5e7eb;
-      padding: 32px;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 16px;
-      padding: 12px 24px;
-      background: #111827;
-      color: white;
-      font-size: 0.95rem;
-    }
-
-    footer {
-      border-top: 1px solid #e5e7eb;
-      margin-top: 80px;
-    }
-
-    footer .container {
-      padding: 32px;
-      font-size: 0.9rem;
-      color: #6b7280;
-    }
-
-    .tab { display: none; }
-    .tab.active { display: block; }
-  </style>
+        @media (max-width: 768px) {
+            .profile-hero { flex-direction: column; text-align: center; align-items: center; }
+            .about-text { text-align: center; }
+            .item-header { flex-direction: column; gap: 0.25rem; align-items: flex-start; }
+            .nav-brand { display: none; }
+            .nav-container { justify-content: center; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-  <div class="container">
-    <h1>Muhamad Akda Fathul Barri</h1>
-    <div class="subtitle">
-      Educational AI Researcher | Human–AI Learning Systems | CSEDU
-    </div>
-    <div class="contact">
-      <a href="mailto:akdafathul@gmail.com">akdafathul@gmail.com</a>
-      <a href="https://github.com/akdabarri" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/muhamadakda" target="_blank">LinkedIn</a>
-    </div>
-  </div>
-</header>
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <div class="nav-brand" onclick="showSection('home')">M. Akda Barri</div>
+                <div class="nav-links">
+                    <span class="nav-link active" onclick="showSection('home')">Home</span>
+                    <span class="nav-link" onclick="showSection('experience')">Experience</span>
+                    <span class="nav-link" onclick="showSection('projects')">Projects</span>
+                    <span class="nav-link" onclick="showSection('publications')">Publications</span>
+                    <span class="nav-link" onclick="showSection('cv')">CV</span>
+                </div>
+            </div>
+        </div>
+    </header>
 
-<nav>
-  <div class="container">
-    <button class="tab-btn active" data-tab="about">About</button>
-    <button class="tab-btn" data-tab="research">Research</button>
-    <button class="tab-btn" data-tab="publications">Publications</button>
-    <button class="tab-btn" data-tab="teaching">Teaching</button>
-    <button class="tab-btn" data-tab="cv">CV</button>
-  </div>
-</nav>
+    <main class="container">
+        
+        <section id="home" class="active">
+            <div class="profile-hero">
+                <div class="profile-img-container">
+                    <img src="images/pp.png" alt="Muhamad Akda Barri">
+                </div>
+                <div class="about-brief">
+                    <h1>Muhamad Akda Fathul Barri</h1>
+                    <p class="about-text">
+                        Hello! I am currently pursuing a Bachelor's degree in Information Systems and Technology Education at the <strong>Indonesia University of Education (UPI)</strong>. Alongside my studies, I work as an Undergraduate Researcher focusing on AI-mediated learning systems under the supervision of <a href="https://scholar.google.com/citations?user=f2CeMUMAAAAJ" target="_blank" class="inline-link">Rizki Hikmawan, M.Pd.</a> and <a href="https://scholar.google.com/citations?user=P-awTsUAAAAJ" target="_blank" class="inline-link">Dr. Suprih Widodo</a>, with academic guidance from <a href="https://scholar.google.com/citations?user=EOVUYkEAAAAJ" target="_blank" class="inline-link">Nuur Wachid Abdul Majid, M.Pd.</a>
+                    </p>
+                    <p class="about-text">
+                        Additionally, I serve as a Teaching Assistant for the Digital Literacy Course at UPI, where I support students in developing their technological competencies. Furthermore, I contribute to research and development, focusing on innovative projects like SEKAPAI and Venn-App that drive educational advancements.
+                    </p>
+                    <p class="about-text">
+                        <strong>Research Interests:</strong> Educational Artificial Intelligence (AIED), Computational Thinking, Human-Computer Interaction (HCI), Intelligent Tutoring Systems, and Assessment-as-Learning.
+                    </p>
+                    <p class="about-text">
+                        My motivation is to forge adaptive human-AI collaboration to catalyze holistic learning outcomes, aiming to ensure that technological innovation is grounded in measurable cognitive and epistemic advancements in educational ecosystems.
+                    </p>
+                    <p class="about-text">
+                        Find more about my background here <a href="#" onclick="showSection('cv')" class="inline-link">[Resume]</a>.
+                    </p>
+                </div>
+            </div>
 
-<main class="container">
+            <h2 class="section-header">Recognition</h2>
+            <div class="recognition-grid">
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="images/mapres1.png" alt="Mapres PSTI Achievement">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-label">Achievement</span>
+                        <h3 class="news-title">1st Place Outstanding Student - PSTI Department 2026</h3>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="images/mapres.png" alt="Mapres UPI Achievement">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-label">Achievement</span>
+                        <h3 class="news-title">1st Place Outstanding Student - UPI Purwakarta Campus 2026</h3>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-img">
+                        <img src="images/garuda.png" alt="Garuda ACE Selection">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-label">Selection</span>
+                        <h3 class="news-title">Selected as Top 50 Mentee - GARUDA ACE (CS-UChicago Mentorship)</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- ABOUT -->
-  <div id="about" class="tab active">
-    <section>
-      <p>
-        I am an undergraduate researcher at the Indonesia University of Education (UPI), focusing on the design and empirical evaluation of AI-mediated learning systems. My work investigates how adaptive scaffolding, interactive programming environments, and learning analytics can improve computational thinking and equitable learning outcomes.
-      </p>
-      <p>
-        I integrate system development with quasi-experimental research designs to ensure that technological innovation is grounded in measurable pedagogical impact.
-      </p>
-    </section>
+        <section id="experience">
+            <h2 class="section-header">Research & Experience</h2>
+            
+            <div class="item-row">
+                <div class="item-header">
+                    <div class="item-title">Indonesia University of Education (UPI)</div>
+                    <div class="item-date">Mar 2025 – Present</div>
+                </div>
+                <div class="item-subtitle">Research Assistant & UX Researcher</div>
+                <ul class="item-desc">
+                    <li>Supported empirical and conceptual research on AI-mediated learning by assisting literature synthesis, data interpretation, and refinement of research questions within computer science education contexts.</li>
+                    <li>Developed AI-based scaffolding systems for programming education.</li>
+                    <li>Conducted theory-informed user research to examine learner interaction patterns with AI-assisted educational systems (UpMySkill LMS).</li>
+                </ul>
+            </div>
 
-    <section>
-      <h2>Research Interests</h2>
-      <div class="tags">
-        <span>Educational Artificial Intelligence</span>
-        <span>Computational Thinking</span>
-        <span>Human-Computer Interaction (HCI)</span>
-        <span>Intelligent Tutoring Systems</span>
-        <span>Learning Analytics</span>
-        <span>Assessment-as-Learning</span>
-      </div>
-    </section>
+            <div class="item-row">
+                <div class="item-header">
+                    <div class="item-title">Kodland</div>
+                    <div class="item-date">Feb 2026 – Present</div>
+                </div>
+                <div class="item-subtitle">Roblox Studio Tutor (Remote)</div>
+                <ul class="item-desc">
+                    <li>Mentored over 12+ students weekly in 1-on-1 and group sessions, focusing on Lua scripting and 3D environment mechanics.</li>
+                    <li>Achieved a 95% project completion rate by simplifying complex programming concepts for diverse age groups.</li>
+                </ul>
+            </div>
 
-    <section>
-      <h2>Education</h2>
-      <p><strong>B.Ed. in Information Systems and Technology</strong></p>
-      <p class="muted">Indonesia University of Education (UPI), 2023–2027 | GPA: 3.76/4.00</p>
-    </section>
-  </div>
+            <div class="item-row">
+                <div class="item-header">
+                    <div class="item-title">Teman Ambiss</div>
+                    <div class="item-date">Aug 2025 – Mar 2026</div>
+                </div>
+                <div class="item-subtitle">Research and Development Intern</div>
+                <ul class="item-desc">
+                    <li>Developed AI-driven prototypes for educational technology applications.</li>
+                    <li>Conducted data analysis to optimize adaptive learning systems.</li>
+                </ul>
+            </div>
+        </section>
 
-  <!-- RESEARCH -->
-  <div id="research" class="tab">
-    <section>
-      <h2>Research Experience</h2>
+        <section id="projects">
+            <h2 class="section-header">Projects</h2>
+            <div class="project-grid">
+                
+                <div class="project-card">
+                    <div class="project-img-box">
+                        <img src="images/venn.png" alt="Venn-App Project">
+                    </div>
+                    <div class="project-info">
+                        <div class="item-title">Venn-App</div>
+                        <div class="item-subtitle">Lead Researcher & Developer</div>
+                        <p class="project-summary">An AI-driven research scaffolding system utilizing Multi-Agent RAG. It provides pedagogical scaffolding for undergraduate researchers, bridging methodology synthesis with advanced prompt engineering.</p>
+                    </div>
+                </div>
 
-      <h3>SYAIR Program – Research Trainee</h3>
-      <p class="muted">Prof. Haryadi Gunawi (University of Chicago) | 2025–Present</p>
-      <p>
-        Selected among top national student researchers. Conducted structured synthesis of AI-assisted learning literature (AIED, SIGCSE, ICER), replicated selected studies, and analyzed experimental methodologies in Computer Science Education.
-      </p>
+                <div class="project-card">
+                    <div class="project-img-box">
+                        <img src="images/du.png" alt="Darul Ulum Project">
+                    </div>
+                    <div class="project-info">
+                        <div class="item-title">Darul Ulum Micro-School Platform</div>
+                        <div class="item-subtitle">Fullstack Developer</div>
+                        <p class="project-summary">A zero-dependency serverless architecture built with Next.js. Evaluated using ISO 25010 standards, proving superior Performance Efficiency and Green Computing metrics compared to traditional CMS.</p>
+                    </div>
+                </div>
 
-      <h3>UX Researcher – UpMySkill LMS</h3>
-      <p class="muted">Indonesia University of Education</p>
-      <p>
-        Conducted theory-informed usability testing and behavioral analysis to optimize adaptive learning interfaces and interaction workflows.
-      </p>
-    </section>
+                <div class="project-card">
+                    <div class="project-img-box">
+                        <img src="images/sekapai.png" alt="SEKAPAI Project">
+                    </div>
+                    <div class="project-info">
+                        <div class="item-title">SEKAPAI Platform</div>
+                        <div class="item-subtitle">Fullstack Developer</div>
+                        <p class="project-summary">Developed an AI-based scaffolding platform comprising 4,000+ LOC, integrating guided prompts and adaptive feedback mechanisms. Successfully tested on 40+ students in problem-solving tasks.</p>
+                    </div>
+                </div>
 
-    <section>
-      <h2>Selected Systems & Projects</h2>
+                <div class="project-card">
+                    <div class="project-img-box">
+                        <img src="images/logisense.png" alt="LogiSense Project">
+                    </div>
+                    <div class="project-info">
+                        <div class="item-title">LogiSense: Fractured Mind</div>
+                        <div class="item-subtitle">Game Developer</div>
+                        <p class="project-summary">Designed an RPG-based educational game featuring 30+ minutes of gameplay to examine cognitive resilience and decision-making under narrative pressure with 15+ interactive branching scenarios.</p>
+                    </div>
+                </div>
 
-      <h3>SEKAPAI</h3>
-      <p class="muted">AI-based scaffolding system for programming education</p>
+            </div>
+        </section>
 
-      <h3>LogiSense: Fractured Mind</h3>
-      <p class="muted">Game-based experimental environment for cognitive resilience and decision modeling</p>
+        <section id="publications">
+            <h2 class="section-header">Publications</h2>
+            
+            <div class="pub-item">
+                <strong>M. Akda Barri</strong>, Rizki Hikmawan (2026). Human–GenAI Score Alignment in Rubric-Constrained Essay Assessment: Procedural Convergence Without Pedagogical Equivalence. In <em>Journal of Informatics and Vocational Education</em>.
+                <span class="pub-contribution">[Contribution: 92% – Conceived the original research idea, developed the scoring alignment algorithm, conducted primary data collection, performed all statistical analyses, and authored the full manuscript draft.]</span>
+            </div>
 
-      <h3>ALMA LMS</h3>
-      <p class="muted">Scalable LMS prototype integrating analytics-ready architecture</p>
-    </section>
-  </div>
+            <div class="pub-item">
+                N. Wachid A. Majid, <strong>M. Akda Barri</strong>, Ayu P. Sari, Reisa A. Sodikin, M. Nor Azhari, M. Jhon Prestoza (2026). Vocational Teachers’ Insights on Artificial Intelligence and Computational Thinking Integration. In <em>Journal of Research and Education Studies: e-Saintika</em>.
+                <span class="pub-contribution">[Contribution: 25% – Co-conceptualized the methodology, conducted formal qualitative analysis on teachers’ AI adoption barriers, and co-authored the original draft]</span>
+            </div>
 
-  <!-- PUBLICATIONS -->
-  <div id="publications" class="tab">
-    <section>
-      <h2>Selected Publications</h2>
+            <div class="pub-item">
+                Rizki Hikmawan, Dedi Rohendi, Jaka Septiadi, <strong>M. Akda Barri</strong> (2025). Development of SEKAPAI: An AI-Based Scaffolding Platform for Programming Education. <em>Jurnal Sistem Informasi (JUSIFO), 11(2)</em>, 85–96.
+                <span class="pub-contribution">[Contribution: 25% – Developed the frontend UI and engineered the AI scaffolding prompts with strict response limitations]</span>
+            </div>
 
-      <p>
-        Widodo, Suprih, Aisyah Husna Alifah, Jaka Septiadi, Dian Permata Sari, Rahma Maulida, & <strong>M. Akda Barri</strong> (2025).
-        <em>Enhancing Computational Thinking in STEM Education through Interactive Programming Media: Evidence of an Equalizing Effect from a Quasi-Experimental Study.</em>
-        Journal of Educational Science and Technology, 11(3).
-      </p>
+            <div class="pub-item">
+                Suprih Widodo, Aisyah H. Alifah, Jaka Septiadi, Dian P. Sari, <strong>M. Akda Barri</strong>, Rahma Maulida (2025). Enhancing Computational Thinking in STEM Education through Interactive Programming Media: Evidence of an Equalizing Effect from a Quasi-Experimental Study. <em>Journal of Educational Science and Technology, 11(3)</em>.
+                <span class="pub-contribution">[Contribution: 15% – Led manuscript formatting, executed extensive peer-review revisions, and managed the editorial submission process.]</span>
+            </div>
+        </section>
 
-      <p>
-        Rizki Hikmawan, Dedi Rohendi, Jaka Septiadi, & <strong>M. Akda Barri</strong> (2025).
-        <em>Development of SEKAPAI: An AI-Based Scaffolding Platform for Programming Education.</em>
-        Jurnal Sistem Informasi (JUSIFO), 11(2), 85–96.
-      </p>
+        <section id="cv">
+            <h2 class="section-header">Curriculum Vitae</h2>
+            <div class="cv-card">
+                <h3>Complete Academic Record</h3>
+                <p style="color: var(--text-secondary); margin-top: 0.5rem; margin-bottom: 1rem;">Last updated: April 2026</p>
+                <a href="https://drive.google.com/file/d/1tIMaZtWSnVrGlpRmo_8o0iU7oi2CxkEp/view" target="_blank" class="download-btn">
+                    <i class="fa-solid fa-file-pdf"></i> Download CV (PDF)
+                </a>
+            </div>
+        </section>
 
-      <p>
-        Ayu P. Sari, <strong>M. Akda Barri</strong>, Rizki Hikmawan, & Suprih Widodo (2025).
-        <em>Transforming Learning Engagement through Hybridized Digital and Traditional Assessment Practices in the Assessment as Learning Framework.</em>
-        Proceedings of ICETI 2025.
-      </p>
-    </section>
-  </div>
+    </main>
 
-  <!-- TEACHING -->
-  <div id="teaching" class="tab">
-    <section>
-      <h2>Teaching Experience</h2>
-      <h3>Teaching Assistant – Digital Literacy</h3>
-      <p class="muted">2025</p>
-      <p>
-        Assisted undergraduate instruction for 50+ students, supported curriculum refinement, and contributed to reflective pedagogical evaluation.
-      </p>
-    </section>
-  </div>
+    <footer>
+        <div class="container footer-flex">
+            <p>© 2026 Muhamad Akda Barri. All rights reserved.</p>
+            <div style="display: flex; gap: 1rem; font-size: 1.2rem;">
+                <a href="https://linkedin.com/in/muhamadakda" target="_blank" style="color: var(--text-secondary);"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/akdabarri" target="_blank" style="color: var(--text-secondary);"><i class="fa-brands fa-github"></i></a>
+                <a href="https://scholar.google.com/citations?user=sEPzhM8AAAAJ&hl=en" target="_blank" style="color: var(--text-secondary);"><i class="fa-solid fa-graduation-cap"></i></a>
+            </div>
+        </div>
+    </footer>
 
-  <!-- CV -->
-  <div id="cv" class="tab">
-    <section>
-      <h2>Curriculum Vitae</h2>
-      <div class="cv-box">
-        <p><strong>Complete Academic Record</strong></p>
-        <p class="muted">Last updated: April 2026</p>
-        <a class="btn" href="https://drive.google.com/file/d/1tIMaZtWSnVrGlpRmo_8o0iU7oi2CxkEp/view">Download CV (PDF)</a>
-      </div>
-    </section>
-  </div>
-
-</main>
-
-<footer>
-  <div class="container">
-    © 2026 Muhamad Akda Fathul Barri
-  </div>
-</footer>
-
-<script>
-  const buttons = document.querySelectorAll(".tab-btn");
-  const tabs = document.querySelectorAll(".tab");
-
-  buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      buttons.forEach(b => b.classList.remove("active"));
-      tabs.forEach(t => t.classList.remove("active"));
-
-      btn.classList.add("active");
-      document.getElementById(btn.dataset.tab).classList.add("active");
-    });
-  });
-</script>
-
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Show target section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update Nav Active State
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('onclick').includes(sectionId)) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo(0,0);
+        }
+    </script>
 </body>
 </html>
-
